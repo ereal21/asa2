@@ -819,11 +819,25 @@ async def rules_callback_handler(call: CallbackQuery):
     await call.answer(text='❌ Rules were not added')
 
 
+async def help_callback_handler(call: CallbackQuery):
+    bot, user_id = await get_bot_user_ids(call)
+    TgConfig.STATE[user_id] = None
+    user_lang = get_user_language(user_id) or 'en'
+    help_text = t(user_lang, 'help_info', helper=TgConfig.HELPER_URL)
+    await bot.edit_message_text(
+        help_text,
+        chat_id=call.message.chat.id,
+        message_id=call.message.message_id,
+        reply_markup=back('profile')
+    )
+
+
 async def profile_callback_handler(call: CallbackQuery):
     bot, user_id = await get_bot_user_ids(call)
     user = call.from_user
     TgConfig.STATE[user_id] = None
     user_info = check_user(user_id)
+    user_lang = user_info.language or 'en'
     balance = user_info.balance
     operations = select_user_operations(user_id)
     overall_balance = 0
@@ -834,7 +848,7 @@ async def profile_callback_handler(call: CallbackQuery):
             overall_balance += i
 
     items = select_user_items(user_id)
-    markup = profile(items)
+    markup = profile(items, user_lang)
     await bot.edit_message_text(text=f"👤 <b>Profile</b> — {user.first_name}\n🆔"
                                      f" <b>ID</b> — <code>{user_id}</code>\n"
                                      f"💳 <b>Balance</b> — <code>{balance}</code> €\n"
@@ -1127,6 +1141,8 @@ def register_user_handlers(dp: Dispatcher):
                                        lambda c: c.data == 'profile')
     dp.register_callback_query_handler(rules_callback_handler,
                                        lambda c: c.data == 'rules')
+    dp.register_callback_query_handler(help_callback_handler,
+                                       lambda c: c.data == 'help')
     dp.register_callback_query_handler(replenish_balance_callback_handler,
                                        lambda c: c.data == 'replenish_balance')
     dp.register_callback_query_handler(price_list_callback_handler,

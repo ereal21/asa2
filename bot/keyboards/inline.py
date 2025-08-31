@@ -108,13 +108,14 @@ def item_info(item_name: str, category_name: str, lang: str) -> InlineKeyboardMa
     return InlineKeyboardMarkup(inline_keyboard=inline_keyboard)
 
 
-def profile(user_items: int = 0) -> InlineKeyboardMarkup:
+def profile(user_items: int = 0, lang: str = 'en') -> InlineKeyboardMarkup:
     inline_keyboard = [
         [InlineKeyboardButton('💸 Top up balance', callback_data='replenish_balance')]
     ]
     inline_keyboard.append([InlineKeyboardButton('🃏 Blackjack', callback_data='blackjack')])
     if user_items != 0:
         inline_keyboard.append([InlineKeyboardButton('🎁 Purchased items', callback_data='bought_items')])
+    inline_keyboard.append([InlineKeyboardButton(t(lang, 'help'), callback_data='help')])
     inline_keyboard.append([InlineKeyboardButton('🔙 Back to menu', callback_data='back_to_menu')])
     return InlineKeyboardMarkup(inline_keyboard=inline_keyboard)
 
