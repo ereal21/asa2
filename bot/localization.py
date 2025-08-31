@@ -10,6 +10,15 @@ LANGUAGES = {
         'price_list': '💲 Price List',
         'language': '🌐 Language',
         'admin_panel': '🎛 Admin Panel',
+        'help': '❓ Help',
+        'help_info': (
+            'Use the main menu buttons to navigate through the bot:\n'
+            '🛍 Shop – browse products.\n'
+            '👤 Profile – view your balance and purchases.\n'
+            '💸 Top Up – add funds to your balance.\n'
+            '🌐 Language – switch the interface language.\n'
+            'If you need assistance, contact {helper}.'
+        ),
         'choose_language': 'Please choose a language',
         'invoice_message': (
             '🧾 <b>Payment Invoice Created</b>\n\n'
@@ -57,6 +66,15 @@ LANGUAGES = {
         'price_list': '💲 Прайс-лист',
         'language': '🌐 Язык',
         'admin_panel': '🎛 Админ панель',
+        'help': '❓ Помощь',
+        'help_info': (
+            'Используйте кнопки главного меню для навигации по боту:\n'
+            '🛍 Магазин – просмотр товаров.\n'
+            '👤 Профиль – ваш баланс и покупки.\n'
+            '💸 Пополнить – добавить средства на баланс.\n'
+            '🌐 Язык – сменить язык интерфейса.\n'
+            'Если нужна помощь, обратитесь к {helper}.'
+        ),
         'choose_language': 'Пожалуйста, выберите язык',
         'invoice_message': (
             '🧾 <b>Создан инвойс на оплату</b>\n\n'
@@ -103,6 +121,15 @@ LANGUAGES = {
         'price_list': '💲 Kainoraštis',
         'language': '🌐 Kalba',
         'admin_panel': '🎛 Admin pultas',
+        'help': '❓ Pagalba',
+        'help_info': (
+            'Naudokite pagrindinio meniu mygtukus, kad naršytumėte botą:\n'
+            '🛍 Parduotuvė – peržiūrėti prekes.\n'
+            '👤 Profilis – matyti balansą ir pirkinius.\n'
+            '💸 Papildyti – įnešti lėšų į balansą.\n'
+            '🌐 Kalba – pakeisti sąsajos kalbą.\n'
+            'Jei reikia pagalbos, susisiekite su {helper}.'
+        ),
         'choose_language': 'Pasirinkite kalbą',
         'invoice_message': (
             '🧾 <b>Sukurta mokėjimo sąskaita</b>\n\n'
